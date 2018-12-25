@@ -1,0 +1,49 @@
+<% include _header %>
+<% if ((currentUser) && (currentUser.id === user.id)) { %>
+    <a href="/edit" class="pull-right">Change your profile</a>
+    <br>
+<% } %>
+<div style="width: 50%; margin-left: auto; margin-right: auto; text-align: center;">
+    <div style="text-align: left;">
+        <h3 style="font-weight: bold;">Email address:</h3>
+        <h2><%= user.username %></h2>
+
+        <h3 style="font-weight: bold;">Nickname:</h3>
+        <h2><%= user.displayName %></h2>
+
+        <h3 style="font-weight: bold;">Joined date:</h3>
+        <h2><%= user.createdAt.toLocaleString() %></h2>
+
+        <h3 style="font-weight: bold;">About the user:</h3>
+        <% if (user.bio) { %>
+            <h2><%= user.bio %></h2>
+        <% } %>
+
+        <h3 style="font-weight: bold;">Favourite restaurants:</h3>
+        <% if (user.favourite) { %>
+                <ul id="listOfFav">
+
+                </ul>
+                <p style="visibility: hidden;" id="listFavourite"><%= user.favourite %></p>
+            <script>
+                let favArray = document.getElementById("listFavourite");
+                let array = favArray.firstChild.nodeValue;
+                var splits = array.split(',');
+
+                for(let i=0; i< splits.length; i++){
+                    let x = document.createElement("a");
+                    let t = document.createTextNode(splits[i]);
+                    x.href = "/restaurants/" + splits[i].toString();
+                    x.appendChild(t);
+                    document.getElementById("listOfFav").appendChild(x);
+                    document.getElementById("listOfFav").appendChild(document.createElement("br"));
+                }
+
+            </script>
+        <% } %>
+    </div>
+    <br>
+</div>
+
+
+<% include _footer %>

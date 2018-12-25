@@ -1,0 +1,85 @@
+<% include _header %>
+<% if(currentUser){ %>
+    <div style="float: right;">
+        <form action="/edit/favourite" method="post">
+            <h4>Select if u want to save this restaurant as a favourite.</h4>
+            <label class="switch">
+                <input type="hidden" name="restID" value="<%= restaurant.id %>" hidden>
+                <input type="checkbox" name="favourite" value="<%= restaurant.name %>" checked>
+                <span class="slider round"></span>
+            </label>
+            <button name="saveFav" type="submit">Save</button>
+            <h4></h4>
+        </form>
+    </div>
+    <h2></h2>
+<% } %>
+
+<div class="singleRHolder">
+    <h2><i>Name: </i><strong><%= restaurant.name %></strong></h2>
+
+    <!--image of restaurant-->
+    <div id="restaurantImageHolder">
+        <img style="background-color: white; padding: 2px; border: black 2px solid;" src="<%= restaurant.photograph %>"
+             alt="restaurant image">
+        <div style=" padding: 10px; float: right;">
+            <h4>Monday - <strong><%= restaurant.operating_hours.Monday %></strong></h4>
+            <h4>Tuesday - <strong><%= restaurant.operating_hours.Tuesday %></strong></h4>
+            <h4>Wednesday - <strong><%= restaurant.operating_hours.Wednesday %></strong></h4>
+            <h4>Thursday - <strong><%= restaurant.operating_hours.Thursday %></strong></h4>
+            <h4>Friday - <strong><%= restaurant.operating_hours.Friday %></strong></h4>
+            <h4>Saturday - <strong><%= restaurant.operating_hours.Saturday %></strong></h4>
+            <h4>Sunday - <strong><%= restaurant.operating_hours.Sunday %></strong></h4>
+        </div>
+    </div>
+        <div>
+            <div>
+
+                <h2></h2>
+            </div>
+    </div>
+    <h3><i>Neighborhood: </i><strong><%= restaurant.neighborhood %></strong></h3>
+    <h3><i>Address: </i><strong><%= restaurant.address %></strong></h3>
+    <hr>
+    <h2><strong>Reviews</strong></h2>
+    <div class="reviewsDiv">
+        <% restaurant.reviews.forEach(function (review) { %>
+            <div>
+                <div style="border: #004890 2px solid; padding: 5px;">
+                    <h4>Rating given - <strong><%= review.rating %></strong></h4>
+                    <h4><i><%= review.comments %></i></h4>
+                    <h4>Commented by: <strong><%= review.name %></strong><i style="float: right;"><%= review.date %></i>
+                    </h4>
+                </div>
+                <h2></h2>
+            </div>
+        <% } ) %>
+    </div>
+    <br>
+    <hr style="border: 1px black dotted;">
+    <% if(currentUser){ %>
+        <div style="background-color: rgba(100,160,248,0.71); padding: 10px; width: 70%; margin-left: auto; margin-right: auto; margin-bottom: 20px; border: #004890 2px solid; text-align: left;">
+            <h3>New review</h3>
+            <form action="/restaurants/<%= restaurant.id %>" method="post">
+                <h4>Rating (0-5)</h4>
+                <input name="rating" min="0" max="5" type="text" id="rating" value="0" step="1"
+                       style="width: 2em; border: black 1px solid; text-align: center;"/>
+                <input type="button" onclick="incrementValue()" value=" + "/>
+                <input type="button" onclick="decrementValue()" value=" - "/>
+                <h4></h4>
+                <h4>Write a review</h4>
+                <textarea name="comment" class="form-control" rows="4" cols="50" placeholder="Write your review here.."
+                          style="border: 1px solid black;" required></textarea>
+                <br>
+                <input type="submit" value="Submit" class="btn btn-primary btn-lg active">
+
+                <input style="visibility: hidden" name="name" type="text" class="form-control"
+                       placeholder="Display name" value="<%= currentUser.displayName || "" %>">
+            </form>
+        </div>
+    <% } else { %>
+        <h2 style="color: red;">You have to loggin first if you want to add any comment about this restaurant.</h2>
+    <% } %>
+</div>
+
+<% include _footer %>

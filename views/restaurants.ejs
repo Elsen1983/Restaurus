@@ -1,0 +1,52 @@
+<% include _header %>
+<div class="bodySim">
+<h2 style="text-align: center; font-weight: bold;">List of restaurants</h2>
+<br>
+<div class="searchContainer">
+    <h4>Filtering by </h4>
+    <!--Search by Filter-->
+    <form class="form-inline my-2 my-lg-2" style="float: left;">
+        <select id="orderSelector" class="search_select_fields" title="filter" onchange="selectFilter(this.value)">
+            <option value="name">Name</option>
+            <option value="neighborhood">Neighborhood</option>
+            <option value="cuisine">Cuisine</option>
+        </select>
+        <a id="filter_BTN" class="btn btn-primary my-2 my-sm-0" type="submit" href="/restaurants/name">Use Filter</a>
+    </form>
+    <h4 style="float: left; padding: 10px;">or</h4>
+    <!--Search by Input-->
+    <form  action="/restaurants/regexSearch" method="post" class="form-inline my-2 my-lg-2" >
+        <input id="searchField" name="searchResult" class="form-control mr-sm-2" aria-label="Search" type="text" placeholder="Search.." required>
+        <span class="validity">  </span>
+        <input id="search_BTN" class="btn btn-primary my-2 my-sm-0" type="submit" value="Search" style="margin-left: 3em;">
+
+    </form>
+</div>
+<br>
+<div style="width: 100%; margin-left: auto; margin-right: auto; float: left;">
+<% restaurants.forEach(function (restaurant) { %>
+    <div class="card-group" style="float: left;">
+        <div class="card ">
+            <div class="text-center text-white bg-info mb-3"
+                 style="width: auto; border: #004890 solid 2px; display: inline-block; margin-right: 10px; margin-bottom: 10px; padding: 5px;">
+                <br>
+                <img class="card-img-top" src="<%= restaurant.photograph %>"
+                     alt="Card image cap of <%= restaurant.name %>"
+                     style="border: black 1px solid;height: 8em; padding: 5px; background-color: white;">
+                <div class="card-body">
+                    <h3 class="card-title"
+                        style="color: black; font-size: 0.8em;font-weight: bold;"> <%= restaurant.name %> </h3>
+                    <h5 class="card-text"> <%= restaurant.neighborhood %> </h5>
+                    <h5 class="card-text"> <%= restaurant.cuisine_type %> </h5>
+                </div>
+                <div class="card-footer">
+                    <a href="/restaurants/<%= restaurant.name %>" class="btn btn-primary"> Check details </a>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+<% }) %>
+</div>
+</div>
+<% include _footer %>
