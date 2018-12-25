@@ -1,0 +1,321 @@
+body {
+    line-height: 1em;
+    margin: 0;
+    background-color: white;
+    /*https://css-tricks.com/snippets/css/fluid-typography/*/
+    /*  font-size: calc([minimum size] + ([maximum size] - [minimum size]) * ((100vw - [minimum viewport width]) / ([maximum viewport width] - [minimum viewport width])));*/
+    font-size: calc(16px + (24 - 16) * ((100vw - 300px) / (1600 - 300)));
+    font-family: 'Open Sans', sans-serif;
+}
+
+nav, header, footer {
+    display: block;
+    font-family: 'Lato', sans-serif;
+
+}
+
+body div.container_top {
+    margin-bottom: 5px;
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    top: 0;
+    z-index: 6;
+}
+
+#container_top_gradient {
+    /*background: rgb(194, 194, 194);*/
+    background: #dbf1ff;
+    background: -webkit-linear-gradient(#e7ffe4, #dbf1ff);
+    background: -o-linear-gradient(#e7ffe4, #dbf1ff);
+    background: -moz-linear-gradient(#e7ffe4, #dbf1ff);
+    background: linear-gradient(#e7ffe4, #dbf1ff);
+}
+
+.logoContainer{
+}
+
+.logoClass{
+    height: 70px;
+    width: auto;
+    margin: auto;
+}
+.logoContainer img{
+    /*width: 55%;*/
+}
+
+div.siteNameText{
+    /*font-family: 'Russo One', sans-serif;*/
+    /*font-family: 'Monoton', cursive;*/
+    font-family: 'Audiowide', cursive;
+    font-size: 2em;
+    font-weight: bold;
+    color: darkblue;
+    font-style: italic;
+    letter-spacing: 5px;
+    text-align: center;
+    text-shadow: 2px 2px 10px #ffffff, -1px -1px 5px #ffffff, 5px 5px 10px #257779;
+    padding-top: 5px;
+}
+
+div.siteNameText strong {
+    color: #000000;
+    font-size: 1.2em;
+    letter-spacing: 5px;
+}
+
+nav {
+    position: fixed;
+    z-index: 6;
+    top: 80px;
+    /*height: 40px;*/
+    width: 100%;
+    /*margin-bottom: 10px;*/
+    box-shadow: -2px -2px 7px 2px rgba(0, 0, 0, 0.75), 2px 2px 7px 2px rgba(0, 0, 0, 0.75);
+    background-color: #7eff80;
+}
+
+nav ul{
+    background-color: #e8e8e8;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    border-top: 2px solid #b2b2b2;
+    border-bottom: 2px solid #b2b2b2;
+}
+
+nav.top_nav{
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+nav ul.top_nav li{
+    /*remove the bullet points*/
+    list-style: none;
+    /*move list element into a one row with floating*/
+    float: left;
+    padding-right: 5px;
+}
+
+nav ul.top_nav li:first-child{
+    margin-left: 4%;
+}
+ul.top_nav li:first-child a{
+    padding-left: 15px;
+}
+
+/*push it to the right side in the nav bar*/
+ul.top_nav li.top_nav_right{
+    float: right;
+    margin-right: 4%;
+}
+ul.top_nav li.top_nav_right2{
+    float: right;
+}
+ul.top_nav li.top_nav_right a{
+    /*padding-right: 15px;*/
+}
+
+ul.top_nav li a{
+    display: block;
+    /*remove underline on anchor tags*/
+    text-decoration: none;
+    padding: 10px;
+    text-transform: uppercase;
+    color: #000000;
+    font-size: 1.05em;
+    font-weight: 600;
+    text-shadow: 3px 2px 4px #506eb4;
+}
+
+/*hover effect on menu element*/
+ul.top_nav li a:hover{
+    background-color: #004890;
+    color: white;
+    text-shadow: 2px 2px 4px black;
+}
+/*video one end here now*/
+
+/*Create DROP-DOWN icon for Nav Bar*/
+ul.top_nav li.drop_down_Icon{
+    /*change the trigram icon to invisible by display:none*/
+    display: none;
+}
+
+.bg-info {
+    background-color: #8ab6bb;
+}
+
+.bodySim{
+    margin-left: 5%;
+}
+
+.container{
+    padding-top: 150px;
+    box-shadow: -2px -2px 7px 2px rgba(0, 0, 0, 0.75), 2px 2px 7px 2px rgba(0, 0, 0, 0.75);
+
+    /*background: #dbf1ff;*/
+    background: -webkit-linear-gradient(#e7ffe4, #dbf1ff);
+    background: -o-linear-gradient(#e7ffe4, #dbf1ff);
+    background: -moz-linear-gradient(#e7ffe4, #dbf1ff);
+    background: linear-gradient(#e7ffe4, #dbf1ff);
+}
+
+/*input:invalid ~ span:after {*/
+    /*content: '✖';*/
+    /*padding-left: 5px;*/
+    /*position: absolute;*/
+/*}*/
+
+/*input:valid ~ span:after {*/
+    /*content: '✓';*/
+    /*padding-left: 5px;*/
+    /*position: absolute;*/
+/*}*/
+
+#orderSelector{
+    width: 10em;
+}
+#searchField{
+    width: 15em;
+}
+
+
+/*switch checkbox*/
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.singleRHolder{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    text-justify: inherit;
+    clear: right;
+}
+
+/* --------------*/
+
+
+
+@media screen and (max-width:1100px){
+    div.siteNameText{
+        text-align: center;
+        font-size: 1.8em;
+        letter-spacing: 0;
+    }
+
+    nav ul.top_nav li{
+        font-size: 0.85em;
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+/*create media query at 680px*/
+@media screen and (max-width:680px){
+
+    body{
+        line-height: 0.5em;
+    }
+
+    div.siteNameText{
+        text-align: center;
+        font-size: 1.5em;
+        letter-spacing: 0;
+    }
+    .logoClass {
+        height: 60px;
+    }
+
+    ul.top_nav li:not(:nth-child(1)){
+        display: none;
+    }
+    ul.top_nav li.drop_down_Icon{
+        /*change the trigram icon to visible by display:*/
+        display: block;
+        float: right;
+    }
+
+    ul.top_nav.responsive{
+        position: relative;
+    }
+    ul.top_nav.responsive li{
+        display: inline;
+        float: none;
+    }
+    ul.top_nav.responsive li a{
+        display: block;
+        text-align: right;
+
+    }
+    ul.top_nav.responsive li a:hover{
+        background: blue;
+        border-top: 1px black solid;
+        border-bottom: 1px black solid;
+    }
+
+    ul.top_nav.responsive li.drop_downIcon{
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
+

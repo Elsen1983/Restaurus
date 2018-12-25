@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="author" content="Norbert Korom"/>
+    <meta name="copyright" content="Norbert Korom"/>
+    <meta name="keywords" content="node.js express mongodb"/>
+    <meta name="description" content="write here one sentence about the page (8-10 word)"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurants Project</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/myStyle.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Audiowide|Monoton|Russo+One" rel="stylesheet">
+
+</head>
+<body>
+<script src="/javascript/myJS.js"></script>
+<div class="container_top" id="container_top_gradient">
+    <div class="siteNameText">
+        <label><strong>Rest</strong>aurus</label>
+        <img class="logoClass" src="/images/dino.png" alt="logo">
+    </div>
+</div>
+<!-- Nav -->
+<nav>
+    <ul class="top_nav" id="drop_down_Click">
+        <li><a class="active" href="/">Home</a></li>
+        <li><a href="/restaurants/name">Restaurants</a></li>
+        <li><a href="/users">Users</a></li>
+        <li><a href="/about">About</a></li>
+            <!--If the user logged in, else if not-->
+            <% if (currentUser) { %>
+                <li class="top_nav_right"><a onclick="" id="editProfile" href="/edit">Hello, <%= currentUser.name() %></a></li>
+                <li class="top_nav_right2"><a onclick="" id="logout_BTN" href="/logout">Log out</a></li>
+                <li class="drop_down_Icon"><a href="#" onclick="drop_down_Menu()">&#9776;</a></li>
+            <% } else { %>
+                <li class="top_nav_right"><a onclick="" id="" href="/signup">Sign up</a></li>
+            <li class="top_nav_right2"><a onclick="" id="login_BTN" href="/login">Login</a></li>
+                <li class="drop_down_Icon"><a href="#" onclick="drop_down_Menu()">&#9776;</a></li>
+            <% } %>
+
+</ul>
+</nav>
+
+<div class="container" style="">
+    <% errors.forEach(function (error) { %>
+        <div class="alert alert-danger" role="alert">
+            <%= error %>
+        </div>
+    <% }) %>
+
+    <% infos.forEach(function (info) { %>
+        <div class="alert alert-info" role="alert">
+            <%= info %>
+        </div>
+<% }) %>
